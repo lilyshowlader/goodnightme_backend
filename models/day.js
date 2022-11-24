@@ -30,6 +30,6 @@ const daySchema = new Schema({
   timestamps: true,
 })
 
-const Profile = mongoose.model('Profile', daySchema)
+const Day = mongoose.model('Day', daySchema)
 
 export { Day }
