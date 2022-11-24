@@ -18,5 +18,6 @@ router.get('/', checkAuth, daysCtrl.index)
 router.get('/:id', checkAuth, daysCtrl.show)
 // PUT /api/days/:id -> to update a specific Day entry
 router.put('/:id', checkAuth, daysCtrl.update)
-
+// DELETE /api/days/:id -> to delete a specific Day entry
+router.delete('/:id', checkAuth, daysCtrl.delete)
 export { router }

@@ -57,9 +57,22 @@ const update = async (req, res) => {
 }
 
 
+const deleteDay = async (req, res) => {
+  try {
+    const day = await Day.findByIdAndDelete(req.params.id)
+    const profile = await Profile.findById(req.user.profile)
+    profile.days.remove({ _id: req.params.id })
+    await profile.save()
+    res.status(200).json(day)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 export {
   create,
   index,
   show, 
-  update
+  update,
+  deleteDay as delete,
 }
