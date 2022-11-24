@@ -30,9 +30,19 @@ const index = async (req, res) => {
   }
 }
 
+const show = async (req, res) => {
+  try {
+    const day = await Day.findById(req.params.id)
+    .populate('profile')
+    res.status(200).json(day)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
 
 
 export {
   create,
-  index
+  index,
+  show
 }

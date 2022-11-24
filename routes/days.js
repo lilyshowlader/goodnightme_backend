@@ -10,9 +10,12 @@ const router = Router()
 
 // ========= Protected Routes ========= 
 router.use(decodeUserFromToken)
-// POST (create)/api/days
+// POST /api/days  -> to create a Day entry
 router.post('/', checkAuth, daysCtrl.create)
-// GET (read/index)/api/days
+// GET /api/days -> to view all Day entries
 router.get('/', checkAuth, daysCtrl.index)
+// GET /api/blogs/:id -> to view a specific Day entry
+router.get('/:id', checkAuth, daysCtrl.show)
+
 
 export { router }
