@@ -14,8 +14,9 @@ router.use(decodeUserFromToken)
 router.post('/', checkAuth, daysCtrl.create)
 // GET /api/days -> to view all Day entries
 router.get('/', checkAuth, daysCtrl.index)
-// GET /api/blogs/:id -> to view a specific Day entry
+// GET /api/days/:id -> to view a specific Day entry
 router.get('/:id', checkAuth, daysCtrl.show)
-
+// PUT /api/days/:id -> to update a specific Day entry
+router.put('/:id', checkAuth, daysCtrl.update)
 
 export { router }

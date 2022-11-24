@@ -40,9 +40,26 @@ const show = async (req, res) => {
   }
 }
 
+const update = async (req, res) => {
+  try {
+    const day = await Day.findByIdAndUpdate(
+      req.params.id,
+      // the first argument is the _id of the document we wish to update
+      req.body,
+      // the second argument is the data used to updata the existing document
+      { new: true }
+      // the third argument specifies we want this method to return the updated document
+    ). populate('profile')
+    res.status(200).json(day)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 
 export {
   create,
   index,
-  show
+  show, 
+  update
 }
