@@ -24,7 +24,8 @@ const daySchema = new Schema({
     enum: ['Working', 'Day Off', 'Stressed']
   },
   bodyCondition: String,
-  feelings: [feelingsSchema]
+  feelings: [feelingsSchema],
+  profile: { type: Schema.Types.ObjectId, ref: 'Profile' },
 },{
   timestamps: true,
 })
