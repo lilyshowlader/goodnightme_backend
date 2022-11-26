@@ -20,4 +20,9 @@ router.get('/:id', checkAuth, daysCtrl.show)
 router.put('/:id', checkAuth, daysCtrl.update)
 // DELETE /api/days/:id -> to delete a specific Day entry
 router.delete('/:id', checkAuth, daysCtrl.delete)
+
+// feelings
+// POST /api/days/:id/feelings
+router.post('/:id/feelings', checkAuth, daysCtrl.createFeeling)
+
 export { router }

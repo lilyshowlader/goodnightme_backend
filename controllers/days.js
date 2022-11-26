@@ -69,10 +69,32 @@ const deleteDay = async (req, res) => {
   }
 }
 
+const createFeeling = async (req, res) => {
+  try {
+    req.body.profile = req.user.profile
+    const day = await Day.findById(req.params.id)
+    day.feelings.push(req.body)
+    await day.save()
+
+    // find the newly created feeling:
+    const newFeeling = day.feelings[day.comments.length - 1]
+
+    // temporarily append profile object to newFeeling.profile
+    const profile = await Profile.findById(req.user.profile)
+    newFeeling.profile = profile
+
+    // respond with the newFeeling
+    res.status(201).json(newFeeling)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 export {
   create,
   index,
   show, 
   update,
   deleteDay as delete,
+  createFeeling,
 }

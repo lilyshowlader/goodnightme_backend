@@ -8,6 +8,7 @@ const feelingsSchema = new Schema ({
     required: true,
     enum: ['Tired', 'Relaxed', 'Stressed', 'Happy', 'Depressed']
   },
+  profile: { type: Schema.Types.ObjectId, ref: 'Profile' },
 })
 
 const daySchema = new Schema({
@@ -17,13 +18,21 @@ const daySchema = new Schema({
     type: String,
     required: true,
   },
-  beforeSleep: String,
+  beforeSleep: {
+    type: String,
+    required: true,
+    enum: ['caffeine', 'alcohol', 'ate late', 'smoking', 'nap', 'screen time', 'worked out', 'n/a']
+  },
   today: {
     type: String,
     required: true,
-    enum: ['Working', 'Day Off', 'Stressed']
+    enum: ['worked', 'chilled']
   },
-  bodyCondition: String,
+  bodyCondition: {
+    type: String,
+    required: true,
+    enum: ['feeling alright', 'blocked nose', 'headache', 'period', 'pain']
+  },
   feelings: [feelingsSchema],
   profile: { type: Schema.Types.ObjectId, ref: 'Profile' },
 },{
