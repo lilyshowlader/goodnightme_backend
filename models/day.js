@@ -12,6 +12,13 @@ const feelingsSchema = new Schema ({
 })
 
 const daySchema = new Schema({
+  date: {
+    type: Date,
+    default: function () {
+      return new Date().setFullYear(new Date().getFullYear())
+    },
+    required: true
+  },
   snoozedAt: String,
   wokeUp: String,
   totalHours: {
